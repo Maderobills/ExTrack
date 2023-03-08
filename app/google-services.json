@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "798134705099",
+    "firebase_url": "https://extrack-a873d-default-rtdb.firebaseio.com",
+    "project_id": "extrack-a873d",
+    "storage_bucket": "extrack-a873d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798134705099:android:506f527fff1b42efaeb44e",
+        "android_client_info": {
+          "package_name": "com.example.extrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798134705099-iv1u97efgmqm5ksfr9stbdl9vuhkdiok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfBik_XulIx5tjDgDdQ1ehsoXh1mfMkzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798134705099-iv1u97efgmqm5ksfr9stbdl9vuhkdiok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
