@@ -12,19 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemIconTint="@color/yell"
-        app:itemTextColor="#FFF"
-        app:itemTextAppearance="?android:textAppearanceSmall"
-        android:layout_gravity="start"
-        android:background="#000000"
-        android:id="@+id/naView"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/navmenu"
-        app:headerLayout="@layout/nav_header"/>
 
-
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:itemIconTint="@color/yell"
+            app:itemTextColor="#FFF"
+            app:itemTextAppearance="?android:textAppearanceSmall"
+            android:layout_gravity="start"
+            android:background="#000000"
+            android:id="@+id/naView"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/navmenu"
+            app:headerLayout="@layout/nav_header"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

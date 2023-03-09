@@ -13,4 +13,6 @@
             android:title="expense"
             android:icon="@drawable/baseline_exposure_neg_1_24"/>
 
+        <item
+                android:title=""/>
 </menu>
