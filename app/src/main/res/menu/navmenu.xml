@@ -3,14 +3,25 @@
 
     <item android:id="@+id/dashboard"
         android:title="Dashboard"
-        android:icon="@drawable/dashboard"/>
+        android:icon="@drawable/baseline_dashboard_24"/>
 
     <item android:id="@+id/income"
         android:title="Income"
-        android:icon="@drawable/income"/>
+        android:icon="@drawable/baseline_exposure_plus_1_24"/>
 
     <item android:id="@+id/expense"
         android:title="Expense"
-        android:icon="@drawable/expense"/>
+        android:icon="@drawable/baseline_exposure_neg_1_24"/>
+
+    <item
+        android:title="" />
+
+    <item
+        android:title="" />
+
+
+    <item android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/baseline_logout_24" />
 
 </menu>
