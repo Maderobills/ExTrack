@@ -84,6 +84,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         });
     }
 
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame,fragment);
+        fragmentTransaction.commit();
+    }
+
 
     @SuppressLint("NonConstantResourceId")
     public void displaySelectedListener(int itemId) {
@@ -92,15 +98,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         switch (itemId) {
             case R.id.dashboard:
-                //fragment = new DashboardFragment();
+                fragment = new DashboardFragment();
                 break;
 
             case R.id.income:
-               // fragment = new IncomeFragment();
+               fragment = new IncomeFragment();
                 break;
 
             case R.id.expense:
-               // fragment = new ExpenseFragment();
+               fragment = new ExpenseFragment();
                 break;
         }
 
