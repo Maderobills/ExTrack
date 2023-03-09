@@ -1,120 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_height="match_parent">
 
-
-    <com.google.android.material.bottomappbar.BottomAppBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottomAppBar"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="-10dp"
-        android:backgroundTint="@color/black"
-       app:fabAlignmentMode="end"
-        app:fabCradleMargin="6dp"
-        app:fabCradleRoundedCornerRadius="40dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:id="@+id/bottomNavigationbar"
-            android:layout_height="56dp"
-            android:background="#00000000"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            app:itemIconTint="#F2CB2E"
-            app:itemTextColor="#F2CB2E"
-            app:itemIconSize="26sp"
-            app:menu="@menu/bottommenu">
+        android:id="@+id/bottomNavigationbar"
+        android:layout_height="56dp"
+        android:backgroundTint="#000000"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        app:itemIconTint="#F2CB2E"
+        app:itemTextColor="#F2CB2E"
+        app:menu="@menu/bottommenu">
 
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="160dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expense"
-            android:id="@+id/expense_ft_text"
-            android:padding="5dp"
-            android:textColor="#FFF"
-            android:background="#FF0000"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:visibility="invisible"
-            android:textAppearance="?android:textAppearanceSmall"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/expense_ft_btn"
-            android:layout_gravity="bottom|end"
-            android:backgroundTint="#FF0000"
-            android:elevation="6dp"
-            app:fabSize="mini"
-            android:visibility="invisible"
-            app:pressedTranslationZ="12dp"
-            android:src="@drawable/baseline_exposure_neg_1_24"/>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="90dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Income"
-            android:id="@+id/income_ft_text"
-            android:textColor="#000"
-            android:padding="5dp"
-            android:background="#00FF00"
-            android:layout_marginRight="5dp"
-            android:layout_gravity="center"
-            android:visibility="invisible"
-            android:textAppearance="?android:textAppearanceSmall"/>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/income_ft_btn"
-            android:layout_gravity="bottom|end"
-            android:backgroundTint="#00FF00"
-            android:elevation="6dp"
-            app:fabSize="mini"
-            app:pressedTranslationZ="12dp"
-            android:visibility="invisible"
-            android:src="@drawable/baseline_exposure_plus_1_24"/>
-
-
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fb_main_plus_btn"
-        android:backgroundTint="@color/yell"
-        android:src="@drawable/baseline_add_24"
-        app:layout_anchor="@id/bottomAppBar"
-        app:maxImageSize="50dp"
-        app:tint ="@color/black"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -126,4 +30,4 @@
 
     </FrameLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

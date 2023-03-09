@@ -1,5 +1,7 @@
 package com.example.extrack;
 
+import static com.google.android.material.internal.ContextUtils.getActivity;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +15,17 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,32 +35,36 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private DashboardFragment dashboardFragment;
     private IncomeFragment incomeFragment;
     private ExpenseFragment expenseFragment;
+    private NoteFragment noteFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toolbar toolbar=findViewById(R.id.my_toolbar);
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
         toolbar.setTitle("Expense Tracker");
         setSupportActionBar(toolbar);
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationbar);
         frameLayout = findViewById(R.id.main_frame);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
-                this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         );
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView=findViewById(R.id.naView);
+        NavigationView navigationView = findViewById(R.id.naView);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         dashboardFragment = new DashboardFragment();
         incomeFragment = new IncomeFragment();
         expenseFragment = new ExpenseFragment();
+        noteFragment = new NoteFragment();
         setFragment(dashboardFragment);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,6 +89,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         bottomNavigationView.setItemBackgroundResource(R.color.expense_color);
                         return true;
 
+                    case R.id.note:
+                        setFragment(noteFragment);
+                        bottomNavigationView.setItemBackgroundResource(R.color.dashboard_color);
+                        return true;
+
                     default:
                         return false;
                 }
@@ -84,7 +102,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         });
     }
 
-    private void setFragment(Fragment fragment) {
+        private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame,fragment);
         fragmentTransaction.commit();
