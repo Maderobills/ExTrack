@@ -13,10 +13,19 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private BottomNavigationView bottomNavigationView;
+    private FrameLayout frameLayout;
+
+    private DashboardFragment dashboardFragment;
+    private IncomeFragment incomeFragment;
+    private ExpenseFragment expenseFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +36,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         toolbar.setTitle("Expense Tracker");
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
+        bottomNavigationView = findViewById(R.id.bottomNavigationbar);
+        frameLayout = findViewById(R.id.main_frame);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
                 this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close
         );
@@ -37,7 +48,42 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         NavigationView navigationView=findViewById(R.id.naView);
         navigationView.setNavigationItemSelectedListener(this);
+
+        dashboardFragment = new DashboardFragment();
+        incomeFragment = new IncomeFragment();
+        expenseFragment = new ExpenseFragment();
+        setFragment(dashboardFragment);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                displaySelectedListener(item.getItemId());
+                switch (item.getItemId()) {
+
+                    case R.id.dashboard:
+                        setFragment(dashboardFragment);
+                        bottomNavigationView.setItemBackgroundResource(R.color.dashboard_color);
+                        return true;
+
+                    case R.id.income:
+                        setFragment(incomeFragment);
+                        bottomNavigationView.setItemBackgroundResource(R.color.income_color);
+                        return true;
+
+                    case R.id.expense:
+                        setFragment(expenseFragment);
+                        bottomNavigationView.setItemBackgroundResource(R.color.expense_color);
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+
+        });
     }
+
 
     @SuppressLint("NonConstantResourceId")
     public void displaySelectedListener(int itemId) {
