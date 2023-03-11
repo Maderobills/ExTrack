@@ -7,14 +7,14 @@
     android:layout_margin="5dp"
     android:elevation="5dp"
     android:padding="10dp"
-    android:backgroundTint="@color/yell"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@color/expense_color">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -28,7 +28,7 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
-                android:id="@+id/date_txt_income"/>
+                android:id="@+id/date_txt_expense"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -37,8 +37,8 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
-                android:layout_below="@+id/date_txt_income"
-                android:id="@+id/type_txt_income"
+                android:layout_below="@+id/date_txt_expense"
+                android:id="@+id/type_txt_expense"
                 android:maxLines="1"/>
 
         </RelativeLayout>
@@ -54,10 +54,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="000.000"
-                android:textColor="#FF0000"
+                android:textColor="#FF00"
+                android:textSize="20sp"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
-                android:id="@+id/amount_txt_income"/>
+                android:id="@+id/amount_txt_expense"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -67,8 +68,8 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
-                android:layout_below="@+id/amount_txt_income"
-                android:id="@+id/note_txt_income"/>
+                android:layout_below="@+id/amount_txt_expense"
+                android:id="@+id/note_txt_expense"/>
         </RelativeLayout>
 
     </LinearLayout>
