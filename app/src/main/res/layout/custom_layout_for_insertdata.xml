@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +29,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="AMOUNT: "/>
 
                 </RelativeLayout>
@@ -40,7 +42,10 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/amount_edit"/>
+                        android:id="@+id/amount_edit"
+                        android:background="@drawable/edittext_background"
+                        android:textColor="@color/black"
+                        android:height="35dp"/>
 
 
                 </RelativeLayout>
@@ -61,6 +66,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="TYPE: "/>
 
                 </RelativeLayout>
@@ -73,7 +79,10 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/type_edit"/>
+                        android:id="@+id/type_edit"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_background"
+                        android:height="35dp"/>
 
 
                 </RelativeLayout>
@@ -94,7 +103,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NOTE: "/>
+                        android:text="NOTE: "
+                        android:textColor="@color/black"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -106,7 +116,10 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/note_edit"/>
+                        android:id="@+id/note_edit"
+                        android:textColor="@color/black"
+                        android:background="@drawable/edittext_background"
+                        android:height="35dp"/>
 
 
                 </RelativeLayout>
@@ -130,7 +143,8 @@
                         android:text="CANCEL"
                         android:id="@+id/btn_cancel"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="#000"/>
+                        android:textColor="#FFF"
+                        android:background="@drawable/btnlogin_background"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -144,9 +158,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ADD"
+                        android:background="@drawable/edittext_background"
                         android:id="@+id/btn_add"
                         android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="#000"/>
+                        android:textColor="#F2CB2E"
+                        android:textStyle="bold"/>
 
 
                 </RelativeLayout>
@@ -159,4 +175,4 @@
 
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
