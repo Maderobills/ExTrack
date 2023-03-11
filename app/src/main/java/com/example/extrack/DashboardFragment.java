@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.extrack.Model.Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -236,6 +237,14 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
+                String id = mIncomeData.push().getKey();
+
+                String mDate = DateFormat.getDateInstance().format(new Date());
+
+                Data data = new Data(ouramountint,type,note,id,mDate);
+
+                mIncomeData.child(id).setValue(data);
+
 
 
                 Toast.makeText(getActivity(), "Income Data Added", Toast.LENGTH_SHORT).show();
@@ -302,9 +311,14 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
+                String id = mExpenseData.push().getKey();
+                String mDate = DateFormat.getDateInstance().format(new Date());
 
+                Data data = new Data(inamount, tmType, tmNote, id, mDate);
+                mExpenseData.child(id).setValue(data);
 
                 Toast.makeText(getActivity(), "Expense Data Added", Toast.LENGTH_SHORT).show();
+
 
 
                 ftAnimation();
