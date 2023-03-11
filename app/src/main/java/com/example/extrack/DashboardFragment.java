@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -48,7 +50,7 @@ public class DashboardFragment extends Fragment {
     private Animation FadeOpen, FadeClose;
 
     private FirebaseAuth mAuth;
-   // private DatabaseReference mIncomeData, mExpenseData;
+   private DatabaseReference mIncomeData, mExpenseData;
 
 
     /**
@@ -88,8 +90,8 @@ public class DashboardFragment extends Fragment {
         FirebaseUser mUser = mAuth.getCurrentUser();
         String uid = mUser.getUid();
 
-        //ncomeData = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
-       // mExpenseData = FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
+        mIncomeData = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
+        mExpenseData = FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
 
 
         fab_main_btn = myView.findViewById(R.id.fb_main_plus_btn);
