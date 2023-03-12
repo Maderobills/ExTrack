@@ -143,8 +143,8 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CANCEL"
-                        android:id="@+id/btn_cancel"
+                        android:text="DELETE"
+                        android:id="@+id/btn_delete"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="#FFF"
                         android:background="@drawable/btnlogin_background"/>
@@ -160,9 +160,9 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ADD"
+                        android:text="UPDATE"
                         android:background="@drawable/edittext_background"
-                        android:id="@+id/btn_add"
+                        android:id="@+id/btn_update"
                         android:textAppearance="?android:textAppearanceLarge"
                         android:textColor="#F2CB2E"
                         android:textStyle="bold"/>
