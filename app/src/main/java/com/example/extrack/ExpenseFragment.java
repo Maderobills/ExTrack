@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.extrack.Model.Data;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +46,8 @@ public class ExpenseFragment extends Fragment {
     private RecyclerView recyclerView;
     AdapterExpense adapter;
     ArrayList<Data> list;
+
+    private TextView totalExpense;
 
     public ExpenseFragment() {
         // Required empty public constructor
@@ -90,6 +93,8 @@ public class ExpenseFragment extends Fragment {
         mExpenseData= FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
         recyclerView=myview.findViewById(R.id.recycler_id_expense);
 
+        totalExpense=myview.findViewById(R.id.expense_set_result);
+
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
 
         layoutManager.setReverseLayout(true);
@@ -106,14 +111,23 @@ public class ExpenseFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+
+                int totalSumE = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Data data = dataSnapshot.getValue(Data.class);
                     list.add(data);
-                }
 
+
+                    totalSumE += data.getAmount();
+
+                    String stResult = String.valueOf(totalSumE);
+
+                    totalExpense.setText(stResult);
+
+                }
                 adapter.notifyDataSetChanged();
 
-            }
+        }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

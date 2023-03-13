@@ -48,9 +48,8 @@ public class DashboardFragment extends Fragment {
     private String mParam2;
 
     private FloatingActionButton fab_main_btn, fab_income_btn,fab_expense_btn;
-    private TextView fab_income_text,fab_expense_text,totalIncome,totalExpense,totalRemain;
+    private TextView fab_income_text,fab_expense_text,totalIncome,totalExpense,totalRemain,percentRemain;
 
-    private  int remainSum=0, totalSum=0,  totalSumE=0;
     private boolean isOpen = false;
 
     private Animation FadeOpen, FadeClose;
@@ -99,7 +98,6 @@ public class DashboardFragment extends Fragment {
         mIncomeData = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
         mExpenseData = FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
 
-
         fab_main_btn = myView.findViewById(R.id.fb_main_plus_btn);
         fab_income_btn = myView.findViewById(R.id.income_ft_btn);
         fab_expense_btn = myView.findViewById(R.id.expense_ft_btn);
@@ -109,7 +107,6 @@ public class DashboardFragment extends Fragment {
 
         totalIncome=myView.findViewById(R.id.income_set_result);
         totalExpense=myView.findViewById(R.id.expense_set_result);
-        totalRemain=myView.findViewById(R.id.total_set_result);
 
         FadeOpen = AnimationUtils.loadAnimation(getActivity(),R.anim.fade_open);
         FadeClose = AnimationUtils.loadAnimation(getActivity(),R.anim.fade_close);
@@ -144,16 +141,16 @@ public class DashboardFragment extends Fragment {
                     fab_expense_text.setClickable(true);
                     isOpen = true;
                 }
-
             }
         });
 
 
         mIncomeData.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
+                 int totalSum=0;
 
                 for (DataSnapshot mysnap:snapshot.getChildren()){
                     Data data=mysnap.getValue(Data.class);
@@ -166,11 +163,6 @@ public class DashboardFragment extends Fragment {
 
                 }
 
-                remainSum=totalSum-totalSumE;
-
-                String stRemain=String.valueOf(remainSum);
-
-                totalRemain.setText(stRemain);
             }
 
             @Override
@@ -183,33 +175,29 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
-
+                int totalSumE=0;
 
                 for (DataSnapshot mysnap:snapshot.getChildren()){
                     Data data=mysnap.getValue(Data.class);
 
                     totalSumE+=data.getAmount();
 
-
                     String stResult=String.valueOf(totalSumE);
 
-
-
                     totalExpense.setText(stResult);
+
                 }
 
-                remainSum=totalSum-totalSumE;
 
-                String stRemain=String.valueOf(remainSum);
-
-                totalRemain.setText(stRemain);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
+
         });
 
 
