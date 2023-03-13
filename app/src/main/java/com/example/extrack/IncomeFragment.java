@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.extrack.Model.Data;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +46,8 @@ public class IncomeFragment extends Fragment {
     private RecyclerView recyclerView;
     Adapter adapter;
     ArrayList<Data> list;
+
+    private TextView totalIncome;
 
 
     public IncomeFragment() {
@@ -92,6 +95,8 @@ public class IncomeFragment extends Fragment {
         mIncomeData= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
         recyclerView=myview.findViewById(R.id.recycler_id_income);
 
+        totalIncome=myview.findViewById(R.id.income_set_result);
+
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
 
         layoutManager.setReverseLayout(true);
@@ -108,9 +113,18 @@ public class IncomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
+
+                int totalSum=0;
+
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Data data = dataSnapshot.getValue(Data.class);
                     list.add(data);
+
+                    totalSum+=data.getAmount();
+
+                    String stResult=String.valueOf(totalSum);
+
+                    totalIncome.setText(stResult);
                 }
 
                 adapter.notifyDataSetChanged();

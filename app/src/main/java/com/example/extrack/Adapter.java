@@ -140,6 +140,21 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mIncomeData= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(FirebaseAuth.getInstance().getUid());
+
+                mIncomeData.child(post_key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(context,"Deleted Successfully",Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(context,"Failed to Delete"+task.getException(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
                 dialog.dismiss();;
             }
         });
