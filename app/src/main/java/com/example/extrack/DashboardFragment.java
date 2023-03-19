@@ -48,14 +48,21 @@ public class DashboardFragment extends Fragment {
     private String mParam2;
 
     private FloatingActionButton fab_main_btn, fab_income_btn,fab_expense_btn;
-    private TextView fab_income_text,fab_expense_text,totalIncome,totalExpense,totalRemain,percentRemain;
+    private TextView fab_income_text;
+    private TextView fab_expense_text;
+    private TextView totalIncome;
+    private TextView totalExpense;
+    private TextView totalRemain;
+    private TextView percentRemain;
+
+
 
     private boolean isOpen = false;
 
     private Animation FadeOpen, FadeClose;
 
     private FirebaseAuth mAuth;
-   private DatabaseReference mIncomeData, mExpenseData;
+   private DatabaseReference mIncomeData, mExpenseData, allRef;
 
 
     /**
@@ -97,6 +104,7 @@ public class DashboardFragment extends Fragment {
 
         mIncomeData = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
         mExpenseData = FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
+        allRef = FirebaseDatabase.getInstance().getReference();
 
         fab_main_btn = myView.findViewById(R.id.fb_main_plus_btn);
         fab_income_btn = myView.findViewById(R.id.income_ft_btn);
@@ -107,6 +115,9 @@ public class DashboardFragment extends Fragment {
 
         totalIncome=myView.findViewById(R.id.income_set_result);
         totalExpense=myView.findViewById(R.id.expense_set_result);
+        totalRemain=myView.findViewById(R.id.total_set_result);
+
+
 
         FadeOpen = AnimationUtils.loadAnimation(getActivity(),R.anim.fade_open);
         FadeClose = AnimationUtils.loadAnimation(getActivity(),R.anim.fade_close);
@@ -145,23 +156,78 @@ public class DashboardFragment extends Fragment {
         });
 
 
-        mIncomeData.addValueEventListener(new ValueEventListener() {
+
+
+
+        allRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                 int totalSum=0;
 
-                for (DataSnapshot mysnap:snapshot.getChildren()){
-                    Data data=mysnap.getValue(Data.class);
+                mExpenseData.addValueEventListener(new ValueEventListener() {
 
-                    totalSum+=data.getAmount();
+                    int totalSumE=0;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    String stResult=String.valueOf(totalSum);
 
-                    totalIncome.setText(stResult);
+                        for (DataSnapshot mysnap:snapshot.getChildren()){
+                            Data data=mysnap.getValue(Data.class);
 
-                }
+                            totalSumE+=data.getAmount();
+
+
+                            String stResultE=String.valueOf(totalSumE);
+
+                            totalExpense.setText(stResultE);
+
+
+                        }
+                        mIncomeData.addValueEventListener(new ValueEventListener() {
+
+                            int totalSum=0;
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                                for (DataSnapshot mysnap:snapshot.getChildren()){
+                                    Data data=mysnap.getValue(Data.class);
+
+                                    totalSum+=data.getAmount();
+
+                                    String stResult=String.valueOf(totalSum);
+
+                                    totalIncome.setText(stResult);
+
+
+                                }
+                               int remSum = totalSum-totalSumE;
+                                String stRem = String.valueOf(remSum);
+                                totalRemain.setText(stRem);
+
+
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+
+
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
+
 
             }
 
@@ -170,36 +236,6 @@ public class DashboardFragment extends Fragment {
 
             }
         });
-
-        mExpenseData.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                int totalSumE=0;
-
-                for (DataSnapshot mysnap:snapshot.getChildren()){
-                    Data data=mysnap.getValue(Data.class);
-
-                    totalSumE+=data.getAmount();
-
-                    String stResult=String.valueOf(totalSumE);
-
-                    totalExpense.setText(stResult);
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-
-
-        });
-
 
         return myView;
 
