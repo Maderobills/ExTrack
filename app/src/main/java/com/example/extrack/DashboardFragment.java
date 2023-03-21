@@ -1,10 +1,14 @@
 package com.example.extrack;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -28,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -55,7 +60,11 @@ public class DashboardFragment extends Fragment {
     private TextView totalRemain;
     private TextView percentRemain;
 
+    private RecyclerView incomeRecycler, expenseRecycler;
 
+    IncomeAdaptor adaptorIncome;
+    ExpenseAdaptor adaptorExpense;
+    ArrayList<Data> list,listE;
 
     private boolean isOpen = false;
 
@@ -113,6 +122,9 @@ public class DashboardFragment extends Fragment {
         fab_income_text = myView.findViewById(R.id.income_ft_text);
         fab_expense_text = myView.findViewById(R.id.expense_ft_text);
 
+        incomeRecycler=myView.findViewById(R.id.recycler_id_income_dash);
+        expenseRecycler=myView.findViewById(R.id.recycler_id_expense_dash);
+
         totalIncome=myView.findViewById(R.id.income_set_result);
         totalExpense=myView.findViewById(R.id.expense_set_result);
         totalRemain=myView.findViewById(R.id.total_set_result);
@@ -154,15 +166,6 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
-
-
-
-
-
-        allRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
                 mExpenseData.addValueEventListener(new ValueEventListener() {
@@ -229,6 +232,42 @@ public class DashboardFragment extends Fragment {
                 });
 
 
+
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        incomeRecycler.setHasFixedSize(true);
+        incomeRecycler.setLayoutManager(layoutManager);
+
+        LinearLayoutManager layoutManageExpenser=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+
+        layoutManageExpenser.setReverseLayout(true);
+        layoutManageExpenser.setStackFromEnd(true);
+        expenseRecycler.setHasFixedSize(true);
+        expenseRecycler.setLayoutManager(layoutManageExpenser);
+
+        list=new ArrayList<>();
+        adaptorIncome= new IncomeAdaptor(list,getContext());
+        incomeRecycler.setAdapter(adaptorIncome);
+
+        listE=new ArrayList<>();
+        adaptorExpense= new ExpenseAdaptor(listE,getContext());
+        expenseRecycler.setAdapter(adaptorExpense);
+
+        mIncomeData.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Data data = dataSnapshot.getValue(Data.class);
+                    list.add(data);
+
+                }
+                adaptorIncome.notifyDataSetChanged();
+
             }
 
             @Override
@@ -236,6 +275,30 @@ public class DashboardFragment extends Fragment {
 
             }
         });
+
+        mExpenseData.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listE.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Data data = dataSnapshot.getValue(Data.class);
+                    listE.add(data);
+
+                }
+                adaptorExpense.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
 
         return myView;
 
@@ -438,5 +501,6 @@ public class DashboardFragment extends Fragment {
         dialog.show();
 
     }
+
 
 }
