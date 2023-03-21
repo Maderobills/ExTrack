@@ -22,7 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -115,6 +119,9 @@ public class IncomeFragment extends Fragment {
                 list.clear();
 
                 float totalSum=0;
+                String gH = "GHS ";
+
+
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Data data = dataSnapshot.getValue(Data.class);
@@ -122,9 +129,9 @@ public class IncomeFragment extends Fragment {
 
                     totalSum+=data.getAmount();
 
-                    String stResult=String.valueOf(totalSum);
+                    String stResult=String.format("%.2f",totalSum);
 
-                    totalIncome.setText(stResult);
+                    totalIncome.setText(gH+ stResult);
                 }
 
                 adapter.notifyDataSetChanged();

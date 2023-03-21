@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
@@ -37,6 +39,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ExpenseFragment expenseFragment;
     private NoteFragment noteFragment;
 
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         toolbar.setTitle("Expense Tracker");
         setSupportActionBar(toolbar);
+
+        auth = FirebaseAuth.getInstance();
 
 
         bottomNavigationView = findViewById(R.id.bottomNavigationbar);
@@ -66,6 +72,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         expenseFragment = new ExpenseFragment();
         noteFragment = new NoteFragment();
         setFragment(dashboardFragment);
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -109,35 +116,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
 
-    @SuppressLint("NonConstantResourceId")
-    public void displaySelectedListener(int itemId) {
-
-        Fragment fragment = null;
-
-        switch (itemId) {
-            case R.id.dashboard:
-                fragment = new DashboardFragment();
-                break;
-
-            case R.id.income:
-               fragment = new IncomeFragment();
-                break;
-
-            case R.id.expense:
-               fragment = new ExpenseFragment();
-                break;
-        }
-
-        if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.main_frame, fragment);
-            ft.commit();
-        }
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
-
-    }
 
     @Override
     public void onBackPressed() {
@@ -152,9 +130,43 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
 
+    public void displaySelectedListener(int itemId) {
+
+        Fragment fragment = null;
+
+        switch (itemId) {
+            case R.id.dashboard:
+                break;
+
+            case R.id.income:
+                break;
+
+            case R.id.expense:
+                break;
+
+            case  R.id.logout:
+                auth.signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                break;
+
+
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.main_frame, fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+    }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        return true;
     }
 }

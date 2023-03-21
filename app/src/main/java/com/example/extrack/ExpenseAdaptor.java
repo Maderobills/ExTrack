@@ -33,9 +33,11 @@ public class ExpenseAdaptor extends RecyclerView.Adapter<ExpenseAdaptor.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ExpenseAdaptor.ViewHolder holder, int position) {
 
+        String gH = "GHS ";
+
         Data data = arrayListExpense.get(position);
         holder.type.setText(data.getType());
-        holder.amount.setText(String.valueOf(data.getAmount()));
+        holder.amount.setText(String.format(gH+"%.2f",data.getAmount()));
         holder.note.setText(data.getNote());
         holder.date.setText(data.getDate());
 

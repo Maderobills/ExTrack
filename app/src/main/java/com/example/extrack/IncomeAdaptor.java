@@ -33,9 +33,11 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull IncomeAdaptor.ViewHolder holder, int position) {
 
+        String gH = "GHS ";
+
         Data data = arrayListIncome.get(position);
         holder.type.setText(data.getType());
-        holder.amount.setText(String.valueOf(data.getAmount()));
+        holder.amount.setText(String.format(gH+"%.2f",data.getAmount()));
         holder.note.setText(data.getNote());
         holder.date.setText(data.getDate());
 

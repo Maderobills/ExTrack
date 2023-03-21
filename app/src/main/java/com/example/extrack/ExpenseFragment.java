@@ -113,6 +113,8 @@ public class ExpenseFragment extends Fragment {
                 list.clear();
 
                 float totalSumE = 0;
+                String gH = "GHS ";
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Data data = dataSnapshot.getValue(Data.class);
                     list.add(data);
@@ -120,9 +122,9 @@ public class ExpenseFragment extends Fragment {
 
                     totalSumE += data.getAmount();
 
-                    String stResult = String.valueOf(totalSumE);
+                    String stResult = String.format("%.2f",totalSumE);
 
-                    totalExpense.setText(stResult);
+                    totalExpense.setText(gH+stResult);
 
                 }
                 adapter.notifyDataSetChanged();
