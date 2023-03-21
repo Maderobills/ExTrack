@@ -170,7 +170,7 @@ public class DashboardFragment extends Fragment {
 
                 mExpenseData.addValueEventListener(new ValueEventListener() {
 
-                    int totalSumE=0;
+                    float totalSumE=0;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -189,7 +189,7 @@ public class DashboardFragment extends Fragment {
                         }
                         mIncomeData.addValueEventListener(new ValueEventListener() {
 
-                            int totalSum=0;
+                            float totalSum=0;
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -205,7 +205,7 @@ public class DashboardFragment extends Fragment {
 
 
                                 }
-                               int remSum = totalSum-totalSumE;
+                               float remSum = totalSum-totalSumE;
                                 String stRem = String.valueOf(remSum);
                                 totalRemain.setText(stRem);
 
@@ -391,7 +391,7 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
-                int ouramountint = Integer.parseInt(amount);
+                float ouramountint = Float.parseFloat(amount);
 
                 if (TextUtils.isEmpty(note)){
                     edtNote.setError("Description here!!!");
@@ -460,7 +460,7 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
-                int inamount = Integer.parseInt(tmAmount);
+                float inamount = Float.parseFloat(tmAmount);
 
                 if (TextUtils.isEmpty(tmType)){
                     edtType.setError("Specify (Food,Transport,Entertainment,Tip..etc)");

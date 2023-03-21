@@ -114,7 +114,7 @@ public class IncomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
 
-                int totalSum=0;
+                float totalSum=0;
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Data data = dataSnapshot.getValue(Data.class);

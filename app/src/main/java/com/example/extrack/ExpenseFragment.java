@@ -112,7 +112,7 @@ public class ExpenseFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
 
-                int totalSumE = 0;
+                float totalSumE = 0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Data data = dataSnapshot.getValue(Data.class);
                     list.add(data);

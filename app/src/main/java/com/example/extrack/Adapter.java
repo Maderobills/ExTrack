@@ -34,7 +34,7 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
     private Button btnUpdate,btnDelete;
 
     private String type,note,post_key;
-    private int amount;
+    private float amount;
 
     private DatabaseReference mIncomeData;
 
@@ -114,7 +114,7 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
                 note=editNote.getText().toString().trim();
                 String maomunt=String.valueOf(amount);
                 maomunt=editAmount.getText().toString().trim();
-                int myAmount=Integer.parseInt(maomunt);
+                float myAmount=Float.parseFloat(maomunt);
                 String mDate = DateFormat.getDateInstance().format(new Date());
                 Data data = new Data(myAmount,type,note,post_key,mDate);
 

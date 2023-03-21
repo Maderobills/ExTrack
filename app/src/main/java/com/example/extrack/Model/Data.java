@@ -4,10 +4,10 @@ import java.util.MissingResourceException;
 import java.util.prefs.PreferenceChangeEvent;
 
 public class Data {
-    private int amount;
+    private float amount;
     private String  type, note, id, date;
 
-    public Data(int amount, String type, String note, String id, String date) {
+    public Data(float amount, String type, String note, String id, String date) {
         this.amount = amount;
         this.type = type;
         this.note = note;
@@ -15,11 +15,11 @@ public class Data {
         this.date = date;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 

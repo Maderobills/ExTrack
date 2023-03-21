@@ -117,7 +117,7 @@
            </LinearLayout>
        </RelativeLayout>
 
-    <!--<RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
@@ -136,61 +136,64 @@
 
         </LinearLayout>
 
-    </RelativeLayout>-->
+    </RelativeLayout>
 
 </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="INCOME"
-                android:textStyle="bold"
-                android:textSize="30sp"
-                android:layout_marginVertical="5dp"
-                android:textColor="@color/white"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler_id_income_dash">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="EXPENSE"
-                android:textStyle="bold"
-                android:textSize="30sp"
-                android:layout_marginVertical="5dp"
-                android:textColor="@color/white"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler_id_expense_dash">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-        </LinearLayout>
-
-    </ScrollView>
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationZ="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INCOME"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="5dp"
+                    android:textColor="@color/white"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycler_id_income_dash">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EXPENSE"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="5dp"
+                    android:textColor="@color/white"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycler_id_expense_dash">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -206,18 +209,18 @@
                 android:id="@+id/expense_ft_text"
                 android:padding="5dp"
                 android:textColor="#FFF"
-                android:background="#FF0000"
+                android:background="@drawable/layout_background_e"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:visibility="invisible"
-                android:textAppearance="?android:textAppearanceSmall"/>
+                android:textAppearance="?android:textAppearanceLargePopupMenu"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/expense_ft_btn"
                 android:layout_gravity="bottom|end"
-                android:backgroundTint="#FF0000"
+                android:backgroundTint="#FF00"
                 android:elevation="6dp"
                 app:fabSize="mini"
                 android:visibility="invisible"
@@ -238,13 +241,13 @@
                 android:layout_height="wrap_content"
                 android:text="Income"
                 android:id="@+id/income_ft_text"
-                android:textColor="#000"
+                android:textColor="#FFF"
+                android:background="@drawable/layout_background_i"
                 android:padding="5dp"
-                android:background="#00FF00"
-                android:layout_marginRight="5dp"
+                android:layout_margin="5dp"
                 android:layout_gravity="center"
                 android:visibility="invisible"
-                android:textAppearance="?android:textAppearanceSmall"/>
+                android:textAppearance="?android:textAppearanceLargePopupMenu"/>
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -270,7 +273,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginRight="20dp"
             android:backgroundTint="@color/yell"
-            app:fabSize="normal"
+            app:fabSize="mini"
             android:tint="#000000"
             android:src="@drawable/baseline_add_24"/>
 
