@@ -178,7 +178,7 @@ public class DashboardFragment extends Fragment {
         mExpenseData.addValueEventListener(new ValueEventListener() {
 
             float totalSumE = 0;
-            String gH = "GHS ";
+            final String gH = "GHS ";
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

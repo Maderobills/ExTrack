@@ -155,7 +155,7 @@ public class AdapterExpense extends RecyclerView.Adapter<AdapterExpense.MyViewHo
                 });
 
 
-                dialog.dismiss();;
+                dialog.dismiss();
             }
         });
 

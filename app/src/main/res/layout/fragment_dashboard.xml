@@ -250,7 +250,7 @@
                 android:visibility="invisible"
                 app:pressedTranslationZ="12dp"
                 android:src="@drawable/baseline_exposure_neg_1_24"
-                android:contentDescription="TODO" />
+                android:contentDescription="toggle ExpenseDialog" />
 
 
         </LinearLayout>
@@ -286,7 +286,7 @@
                 app:pressedTranslationZ="12dp"
                 android:visibility="invisible"
                 android:src="@drawable/baseline_exposure_plus_1_24"
-                android:contentDescription="TODO" />
+                android:contentDescription="toggle IncomeDialog" />
 
 
         </LinearLayout>
@@ -302,7 +302,7 @@
             app:fabSize="mini"
             android:tint="#000000"
             android:src="@drawable/baseline_add_24"
-            android:contentDescription="TODO" />
+            android:contentDescription="toggle InputDialog" />
 
 
 

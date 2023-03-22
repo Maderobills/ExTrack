@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layout_background">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -36,7 +38,7 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:layout_margin="10dp">
 
                     <EditText
@@ -46,7 +48,7 @@
                         android:background="@drawable/edittext_background"
                         android:textColor="@color/black"
                         android:padding="10dp"
-                        android:height="40dp"/>
+                        android:height="48dp"/>
 
 
                 </RelativeLayout>
@@ -74,7 +76,7 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:layout_margin="10dp">
 
                     <EditText
@@ -84,7 +86,7 @@
                         android:textColor="@color/black"
                         android:padding="10dp"
                         android:background="@drawable/edittext_background"
-                        android:height="40dp"/>
+                        android:height="48dp"/>
 
 
                 </RelativeLayout>
@@ -112,7 +114,7 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:layout_margin="10dp">
 
                     <EditText
@@ -122,7 +124,7 @@
                         android:textColor="@color/black"
                         android:padding="10dp"
                         android:background="@drawable/edittext_background"
-                        android:height="40dp"/>
+                        android:height="48dp"/>
 
 
                 </RelativeLayout>
@@ -145,9 +147,11 @@
                         android:layout_height="wrap_content"
                         android:text="DELETE"
                         android:id="@+id/btn_delete"
+                        android:paddingVertical="10dp"
                         android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="#FFF"
-                        android:background="@drawable/btnlogin_background"/>
+                        android:textColor="@color/yell"
+                        android:backgroundTint="@color/black"
+                        style="@style/MyButtonStyle"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -161,10 +165,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="UPDATE"
-                        android:background="@drawable/edittext_background"
                         android:id="@+id/btn_update"
+                        android:paddingVertical="10dp"
                         android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="#F2CB2E"
+                        android:textColor="@color/yell"
+                        android:backgroundTint="@color/white"
+                        style="@style/MyButtonStyle"
                         android:textStyle="bold"/>
 
 
