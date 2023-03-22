@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ExTrack" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="Theme.ExTrack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -23,5 +23,29 @@
     <style name="DrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
+
+    <style name="MyButtonStyle" parent="@style/Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/yell</item>
+        <item name="strokeWidth">2dp</item>
+        <!-- Other button style attributes -->
+    </style>
+
+    <style name="MyButtonStyle2" parent="@style/Widget.MaterialComponents.Button">
+        <item name="shapeAppearance">@style/MyShapeAppearance</item>
+        <item name="strokeColor">@color/yell</item>
+        <item name="strokeWidth">2dp</item>
+        <!-- Other button style attributes -->
+    </style>
+
+    <style name="MyShapeAppearance" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
+
+
+
+
 
 </resources>

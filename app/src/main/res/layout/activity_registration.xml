@@ -59,9 +59,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="80dp"
                 android:text="Signup"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="#F2CB2E"
-                android:background="@drawable/btnlogin_background"
+                android:backgroundTint="#000"
+                style="@style/MyButtonStyle"
+                android:paddingVertical="10dp"
                 android:id="@+id/btn_reg"
                 android:textAllCaps="false"/>
 
@@ -71,6 +73,7 @@
                 android:gravity="center"
                 android:text="Already have account? Login here."
                 android:id="@+id/login_reg"
+                android:textColor="#FFF"
                 android:padding="5dp"/>
 
 
