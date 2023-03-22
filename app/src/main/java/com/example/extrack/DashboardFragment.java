@@ -385,13 +385,13 @@ public class DashboardFragment extends Fragment {
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View myviewm = inflater.inflate(R.layout.custom_layout_for_insertdata,null);
         mydialog.setView(myviewm);
-        AlertDialog dialog = mydialog.create();
+        final AlertDialog dialog = mydialog.create();
 
         dialog.setCancelable(false);
 
-        EditText edtAmount = myviewm.findViewById(R.id.amount_edit);
-        EditText edtType = myviewm.findViewById(R.id.type_edit);
-        EditText edtNote= myviewm.findViewById(R.id.note_edit);
+        final EditText edtAmount = myviewm.findViewById(R.id.amount_edit);
+        final EditText edtType = myviewm.findViewById(R.id.type_edit);
+        final EditText edtNote= myviewm.findViewById(R.id.note_edit);
 
         Button btnSave = myviewm.findViewById(R.id.btn_add);
         Button btnCancel = myviewm.findViewById(R.id.btn_cancel);
@@ -459,13 +459,13 @@ public class DashboardFragment extends Fragment {
         View myview = inflator.inflate(R.layout.custom_layout_for_insertdata,null);
         mydialog.setView(myview);
 
-        AlertDialog dialog = mydialog.create();
+        final AlertDialog dialog = mydialog.create();
 
         dialog.setCancelable(false);
 
-        EditText edtAmount = myview.findViewById(R.id.amount_edit);
-        EditText edtType = myview.findViewById(R.id.type_edit);
-        EditText edtNote= myview.findViewById(R.id.note_edit);
+        final EditText edtAmount = myview.findViewById(R.id.amount_edit);
+        final EditText edtType = myview.findViewById(R.id.type_edit);
+        final EditText edtNote= myview.findViewById(R.id.note_edit);
 
         Button btnSave = myview.findViewById(R.id.btn_add);
         Button btnCancel = myview.findViewById(R.id.btn_cancel);

@@ -56,7 +56,7 @@ public class AdapterExpense extends RecyclerView.Adapter<AdapterExpense.MyViewHo
 
         String gH = "GHS ";
 
-        Data data = arrayList.get(position);
+        final Data data = arrayList.get(position);
         holder.type.setText(data.getType());
         holder.amount.setText(String.format(gH+"%.2f",data.getAmount()));
         holder.note.setText(data.getNote());
@@ -86,7 +86,7 @@ public class AdapterExpense extends RecyclerView.Adapter<AdapterExpense.MyViewHo
         View myview=inflater.inflate(R.layout.updte_data,null);
         mydialog.setView(myview);
 
-        AlertDialog dialog=mydialog.create();
+        final AlertDialog dialog=mydialog.create();
 
         editAmount=myview.findViewById(R.id.amount_edit);
         editType=myview.findViewById(R.id.type_edit);

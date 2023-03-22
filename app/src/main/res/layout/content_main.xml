@@ -16,6 +16,7 @@
         android:layout_alignParentLeft="true"
         app:itemIconTint="#F2CB2E"
         app:itemTextColor="#F2CB2E"
+        android:background="#000"
         app:menu="@menu/bottommenu">
 
 

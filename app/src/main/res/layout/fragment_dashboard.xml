@@ -11,7 +11,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="10dp"
         app:cardElevation="5dp"
@@ -51,7 +51,7 @@
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textColor="#00FF00"
                     android:textStyle="bold"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     android:text="000.00"/>
 
             </LinearLayout>
@@ -81,7 +81,7 @@
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="#FF0000"
                 android:textStyle="bold"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:text="000.00"/>
 
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="#F2CB2E"
                 android:textStyle="bold"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:text="000.00"/>
 
         </LinearLayout>
@@ -130,23 +130,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingVertical="15dp"
-            android:background="@drawable/layout_background_per"
+            android:background="@drawable/btnlogin_background"
+            android:padding="15dp"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/total_set_percent"
-                android:text="80%"
-                android:textSize="60sp"
-                android:layout_marginTop="-10dp"
+                android:text="0%"
+                android:layout_marginTop="-13dp"
+                android:textSize="40sp"
                 android:textColor="@color/yell"/>
 
             <TextView
