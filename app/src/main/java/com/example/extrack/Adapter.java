@@ -164,8 +164,6 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
 
     }
 
-
-
     @Override
     public int getItemCount() {
         return arrayList.size();
