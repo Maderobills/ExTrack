@@ -225,7 +225,6 @@ public class DashboardFragment extends Fragment {
                             String stPer = String.valueOf(perRem);
                             percentRemain.setText(stPer + "%");
                         }else{
-
                             percentRemain.setText(100 + "%");
                         }
 
