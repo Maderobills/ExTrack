@@ -220,10 +220,15 @@ public class DashboardFragment extends Fragment {
                         float remSum = totalSum - totalSumE;
                         String stRem = String.format("%.2f", remSum);
                         totalRemain.setText(gH + stRem);
-
                         int perRem = (int) (100 * totalSumE / totalSum);
-                        String stPer = String.valueOf(perRem);
-                        percentRemain.setText(stPer + "%");
+                        if (remSum>0){
+                            String stPer = String.valueOf(perRem);
+                            percentRemain.setText(stPer + "%");
+                        }else{
+
+                            percentRemain.setText(100 + "%");
+                        }
+
 
 
                     }
