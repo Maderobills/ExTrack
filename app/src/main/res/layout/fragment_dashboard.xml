@@ -28,10 +28,10 @@
 
     <RelativeLayout
         android:id="@+id/dash_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +52,8 @@
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textColor="#00FF00"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
                     android:text="000.00"/>
 
             </LinearLayout>
@@ -61,7 +62,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:padding="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +84,72 @@
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="#FF0000"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:text="000.00"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#F2CB2E"
+                android:text="Total"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/total_set_result"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="#F2CB2E"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:text="000.00"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#FFF"
+                android:text="Debt"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/total_debt_result"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="18sp"
                 android:text="000.00"/>
 
         </LinearLayout>
@@ -100,47 +167,85 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="3dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp"
             android:gravity="center">
 
-            <TextView
+         <!--   <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#F2CB2E"
-                android:text="Total"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/total_set_result"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="#F2CB2E"
-                android:textStyle="bold"
+                android:id="@+id/total_set_percent"
+                android:text="0%"
                 android:textSize="20sp"
-                android:text="000.00"/>
+                android:textColor="#FF0000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceListItemSmall"
+                android:textColor="#FF0000"
+                android:layout_marginTop="-5dp"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:text="used"/>-->
 
         </LinearLayout>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/btnlogin_background"
-            android:padding="15dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/total_exp_percent"
+                android:text="0%"
+                android:textSize="20sp"
+                android:textColor="#FF0000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceListItemSmall"
+                android:textColor="#FF0000"
+                android:layout_marginTop="-5dp"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:text="used"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center">
 
             <TextView
@@ -148,22 +253,58 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/total_set_percent"
                 android:text="0%"
-                android:layout_marginTop="-13dp"
-                android:textSize="40sp"
+                android:textSize="20sp"
                 android:textColor="@color/yell"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceListItemSmall"
-                android:textColor="#F2CB2E"
+                android:textColor="@color/yell"
+                android:layout_marginTop="-5dp"
                 android:textStyle="bold"
-                android:layout_marginTop="-13dp"
+                android:textSize="10sp"
                 android:text="used"/>
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/total_debt_percent"
+                android:text="0%"
+                android:textSize="20sp"
+                android:textColor="#FFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceListItemSmall"
+                android:textColor="#FFF"
+                android:layout_marginTop="-5dp"
+                android:textStyle="bold"
+                android:textSize="10sp"
+                android:text="used"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
 
