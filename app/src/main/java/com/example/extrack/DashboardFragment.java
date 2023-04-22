@@ -53,13 +53,10 @@ public class DashboardFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private FloatingActionButton fab_main_btn, fab_income_btn,fab_expense_btn;
-    private TextView fab_income_text;
-    private TextView fab_expense_text;
-    private TextView totalIncome;
-    private TextView totalExpense;
-    private TextView totalRemain;
-    private TextView percentRemain;
+    private FloatingActionButton fab_main_btn, fab_income_btn,fab_expense_btn,fab_debt_btn;
+    private TextView fab_income_text,fab_expense_text,fab_debt_text;
+    private TextView totalIncome, totalExpense, totalRemain, totalDebt;
+    private TextView percentRemain, percentExpense, percentDebt;
 
     private RecyclerView incomeRecycler, expenseRecycler;
 
@@ -72,7 +69,7 @@ public class DashboardFragment extends Fragment {
     private Animation FadeOpen, FadeClose;
 
     private FirebaseAuth mAuth;
-   private DatabaseReference mIncomeData, mExpenseData, allRef;
+   private DatabaseReference mIncomeData, mExpenseData,mDebtData, allRef;
 
 
     /**
@@ -114,14 +111,17 @@ public class DashboardFragment extends Fragment {
 
         mIncomeData = FirebaseDatabase.getInstance().getReference().child("IncomeData").child(uid);
         mExpenseData = FirebaseDatabase.getInstance().getReference().child("ExpenseData").child(uid);
+        mDebtData = FirebaseDatabase.getInstance().getReference().child("DebtData").child(uid);
         allRef = FirebaseDatabase.getInstance().getReference();
 
         fab_main_btn = myView.findViewById(R.id.fb_main_plus_btn);
         fab_income_btn = myView.findViewById(R.id.income_ft_btn);
         fab_expense_btn = myView.findViewById(R.id.expense_ft_btn);
+        fab_debt_btn = myView.findViewById(R.id.debt_ft_btn);
 
         fab_income_text = myView.findViewById(R.id.income_ft_text);
         fab_expense_text = myView.findViewById(R.id.expense_ft_text);
+        fab_debt_text = myView.findViewById(R.id.debt_ft_text);
 
         incomeRecycler = myView.findViewById(R.id.recycler_id_income_dash);
         expenseRecycler = myView.findViewById(R.id.recycler_id_expense_dash);
@@ -129,7 +129,10 @@ public class DashboardFragment extends Fragment {
         totalIncome = myView.findViewById(R.id.income_set_result);
         totalExpense = myView.findViewById(R.id.expense_set_result);
         totalRemain = myView.findViewById(R.id.total_set_result);
+        totalDebt = myView.findViewById(R.id.total_debt_result);
+        percentExpense = myView.findViewById(R.id.total_exp_percent);
         percentRemain = myView.findViewById(R.id.total_set_percent);
+        percentDebt = myView.findViewById(R.id.total_debt_percent);
 
 
         FadeOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_open);
@@ -144,25 +147,33 @@ public class DashboardFragment extends Fragment {
                 if (isOpen) {
                     fab_income_btn.startAnimation(FadeClose);
                     fab_expense_btn.startAnimation(FadeClose);
+                    fab_debt_btn.startAnimation(FadeClose);
                     fab_income_btn.setClickable(false);
                     fab_expense_btn.setClickable(false);
+                    fab_debt_btn.setClickable(false);
 
                     fab_income_text.startAnimation(FadeClose);
                     fab_expense_text.startAnimation(FadeClose);
+                    fab_debt_text.startAnimation(FadeClose);
                     fab_income_text.setClickable(false);
                     fab_expense_text.setClickable(false);
+                    fab_debt_text.setClickable(false);
                     isOpen = false;
 
                 } else {
                     fab_income_btn.startAnimation(FadeOpen);
                     fab_expense_btn.startAnimation(FadeOpen);
+                    fab_debt_btn.startAnimation(FadeOpen);
                     fab_income_btn.setClickable(true);
                     fab_expense_btn.setClickable(true);
+                    fab_debt_btn.setClickable(true);
 
                     fab_income_text.startAnimation(FadeOpen);
                     fab_expense_text.startAnimation(FadeOpen);
+                    fab_debt_text.startAnimation(FadeOpen);
                     fab_income_text.setClickable(true);
                     fab_expense_text.setClickable(true);
+                    fab_debt_text.setClickable(true);
                     isOpen = true;
                 }
             }
@@ -215,17 +226,18 @@ public class DashboardFragment extends Fragment {
 
 
                         }
-
-
                         float remSum = totalSum - totalSumE;
                         String stRem = String.format("%.2f", remSum);
                         totalRemain.setText(gH + stRem);
-                        int perRem = (int) (100 * totalSumE / totalSum);
+                        int perExp = (int) (100 * totalSumE / totalSum);
+                        int perRem = (int) (100 * remSum / totalSum);
                         if (remSum>0){
-                            String stPer = String.valueOf(perRem);
-                            percentRemain.setText(stPer + "%");
+                            String stPerExp = String.valueOf(perExp);
+                            String stPerRem = String.valueOf(perRem);
+                            percentExpense.setText(stPerExp + "%");
+                            percentRemain.setText(stPerRem + "%");
                         }else{
-                            percentRemain.setText(100 + "%");
+                            percentExpense.setText(100 + "%");
                         }
 
 
