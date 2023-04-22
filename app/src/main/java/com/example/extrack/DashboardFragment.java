@@ -346,25 +346,33 @@ public class DashboardFragment extends Fragment {
         if (isOpen){
             fab_income_btn.startAnimation(FadeClose);
             fab_expense_btn.startAnimation(FadeClose);
+            fab_debt_btn.startAnimation(FadeClose);
             fab_income_btn.setClickable(false);
             fab_expense_btn.setClickable(false);
+            fab_debt_btn.setClickable(false);
 
             fab_income_text.startAnimation(FadeClose);
             fab_expense_text.startAnimation(FadeClose);
+            fab_debt_text.startAnimation(FadeClose);
             fab_income_text.setClickable(false);
             fab_expense_text.setClickable(false);
+            fab_debt_text.setClickable(false);
             isOpen = false;
 
         }else {
             fab_income_btn.startAnimation(FadeOpen);
             fab_expense_btn.startAnimation(FadeOpen);
+            fab_debt_btn.startAnimation(FadeOpen);
             fab_income_btn.setClickable(true);
             fab_expense_btn.setClickable(true);
+            fab_debt_btn.setClickable(true);
 
             fab_income_text.startAnimation(FadeOpen);
             fab_expense_text.startAnimation(FadeOpen);
+            fab_debt_text.startAnimation(FadeOpen);
             fab_income_text.setClickable(true);
             fab_expense_text.setClickable(true);
+            fab_debt_text.setClickable(true);
             isOpen = true;
         }
     }
@@ -387,6 +395,15 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 expenseDataInsert();
+
+            }
+        });
+
+        fab_debt_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               debtDataInsert();
 
             }
         });
@@ -539,5 +556,77 @@ public class DashboardFragment extends Fragment {
 
     }
 
+    public void debtDataInsert(){
+
+        AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflator = LayoutInflater.from(getActivity());
+        View myview = inflator.inflate(R.layout.custom_layout_for_insertdata,null);
+        mydialog.setView(myview);
+
+        final AlertDialog dialog = mydialog.create();
+
+        dialog.setCancelable(false);
+
+        final EditText edtAmount = myview.findViewById(R.id.amount_edit);
+        final EditText edtType = myview.findViewById(R.id.type_edit);
+        final EditText edtNote= myview.findViewById(R.id.note_edit);
+
+        Button btnSave = myview.findViewById(R.id.btn_add);
+        Button btnCancel = myview.findViewById(R.id.btn_cancel);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String tmAmount = edtAmount.getText().toString().trim();
+                String tmType = edtType.getText().toString().trim();
+                String tmNote = edtNote.getText().toString().trim();
+
+                if (TextUtils.isEmpty(tmAmount)){
+                    edtAmount.setError("Specify Amount");
+                    return;
+                }
+
+                float inamount = Float.parseFloat(tmAmount);
+
+                if (TextUtils.isEmpty(tmType)){
+                    edtType.setError("Specify (Food,Transport,Entertainment,Tip..etc)");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(tmNote)){
+                    edtNote.setError("Description here!!!");
+                    return;
+                }
+
+                String id = mExpenseData.push().getKey();
+                String mDate = DateFormat.getDateInstance().format(new Date());
+
+                Data data = new Data(inamount, tmType, tmNote, id, mDate);
+                mExpenseData.child(id).setValue(data);
+
+                Toast.makeText(getActivity(), "Expense Data Added", Toast.LENGTH_SHORT).show();
+
+
+
+                ftAnimation();
+                dialog.dismiss();
+
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ftAnimation();
+                dialog.dismiss();
+
+            }
+        });
+
+        dialog.show();
+
+    }
 
 }
