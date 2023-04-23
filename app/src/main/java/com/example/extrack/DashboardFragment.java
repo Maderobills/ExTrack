@@ -2,7 +2,6 @@ package com.example.extrack;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -58,11 +56,12 @@ public class DashboardFragment extends Fragment {
     private TextView totalIncome, totalExpense, totalRemain, totalDebt;
     private TextView percentRemain, percentExpense, percentDebt;
 
-    private RecyclerView incomeRecycler, expenseRecycler;
+    private RecyclerView incomeRecycler, expenseRecycler,debtRecycler;
 
     IncomeAdaptor adaptorIncome;
     ExpenseAdaptor adaptorExpense;
-    ArrayList<Data> list,listE;
+    DebtAdaptor adaptorDebt;
+    ArrayList<Data> list,listE,listD;
 
     private boolean isOpen = false;
 
@@ -125,6 +124,7 @@ public class DashboardFragment extends Fragment {
 
         incomeRecycler = myView.findViewById(R.id.recycler_id_income_dash);
         expenseRecycler = myView.findViewById(R.id.recycler_id_expense_dash);
+        debtRecycler = myView.findViewById(R.id.recycler_id_debt_dash);
 
         totalIncome = myView.findViewById(R.id.income_set_result);
         totalExpense = myView.findViewById(R.id.expense_set_result);
@@ -132,7 +132,7 @@ public class DashboardFragment extends Fragment {
         totalDebt = myView.findViewById(R.id.total_debt_result);
         percentExpense = myView.findViewById(R.id.total_exp_percent);
         percentRemain = myView.findViewById(R.id.total_set_percent);
-        percentDebt = myView.findViewById(R.id.total_debt_percent);
+        //percentDebt = myView.findViewById(R.id.total_debt_percent);
 
 
         FadeOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_open);
@@ -186,30 +186,11 @@ public class DashboardFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-        mExpenseData.addValueEventListener(new ValueEventListener() {
+                mExpenseData.addValueEventListener(new ValueEventListener() {
 
-            float totalSumE = 0;
-            final String gH = "GHS ";
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-                for (DataSnapshot mysnap : snapshot.getChildren()) {
-                    Data data = mysnap.getValue(Data.class);
-
-                    totalSumE += data.getAmount();
-
-
-                    String stResultE = String.format("%.2f", totalSumE);
-
-                    totalExpense.setText(gH + stResultE);
-
-
-                }
-                mIncomeData.addValueEventListener(new ValueEventListener() {
-
-                    float totalSum = 0;
+                    float totalSumE = 0;
+                    final String gH = "GHS ";
+                    final String gHs = "GHS -";
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -218,29 +199,117 @@ public class DashboardFragment extends Fragment {
                         for (DataSnapshot mysnap : snapshot.getChildren()) {
                             Data data = mysnap.getValue(Data.class);
 
-                            totalSum += data.getAmount();
-
-                            String stResult = String.format("%.2f", totalSum);
-
-                            totalIncome.setText(gH + stResult);
+                            totalSumE += data.getAmount();
 
 
+                            String stResultE = String.format("%.2f", totalSumE);
+
+                            totalExpense.setText(gH + stResultE);
                         }
-                        float remSum = totalSum - totalSumE;
-                        String stRem = String.format("%.2f", remSum);
-                        totalRemain.setText(gH + stRem);
-                        int perExp = (int) (100 * totalSumE / totalSum);
-                        int perRem = (int) (100 * remSum / totalSum);
-                        if (remSum>0){
-                            String stPerExp = String.valueOf(perExp);
-                            String stPerRem = String.valueOf(perRem);
-                            percentExpense.setText(stPerExp + "%");
-                            percentRemain.setText(stPerRem + "%");
-                        }else{
-                            percentExpense.setText(100 + "%");
-                        }
+                        mIncomeData.addValueEventListener(new ValueEventListener() {
+
+                            float totalSum = 0;
+
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
+                                for (DataSnapshot mysnap : snapshot.getChildren()) {
+                                    Data data = mysnap.getValue(Data.class);
+
+                                    totalSum += data.getAmount();
+
+                                    String stResult = String.format("%.2f", totalSum);
+
+                                    totalIncome.setText(gH + stResult);
+
+
+                                }
+                                mDebtData.addValueEventListener(new ValueEventListener() {
+
+                                    float debtSum = 0;
+
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                                        for (DataSnapshot mysnap : snapshot.getChildren()) {
+                                            Data data = mysnap.getValue(Data.class);
+
+                                            debtSum += data.getAmount();
+
+                                            String stDResult = String.format("%.2f",debtSum);
+
+                                            totalDebt.setText(gHs + stDResult);
+
+
+                                        }
+
+                                        float remSum = totalSum - totalSumE;
+                                        String stRem = String.format("%.2f", remSum);
+                                        totalRemain.setText(gH + stRem);
+                                        int perExp = (int) (100 * totalSumE / totalSum);
+                                        int perRem = (int) (100 * remSum / totalSum);
+                                       // int perDebt = (int) ( debtSum / remSum);
+                                       // int debtRem = 100 - perDebt;
+                                        if (remSum > 0) {
+                                            String stPerExp = String.valueOf(perExp);
+                                            String stPerRem = String.valueOf(perRem);
+                                            percentExpense.setText(stPerExp + "%");
+                                            percentRemain.setText(stPerRem + "%");
+
+                                          /*  if ( debtSum > remSum) {
+                                                String stPerDebt = String.valueOf(debtRem);
+                                                percentDebt.setText(stPerDebt + "%");
+                                            } else {
+                                                percentDebt.setText(100 + "%");
+                                            }*/
+                                        } else if (remSum < 0) {
+                                            float addDebt =- remSum;
+                                            float newDebt = addDebt + debtSum;
+                                            //int perDebt2 = (int) ( newDebt / remSum);
+                                           // int debtRem2 = 100 - perDebt2;
+
+                                            percentExpense.setText(100 + "%");
+                                            String stnDResult = String.format("%.2f",newDebt);
+                                            totalDebt.setText(gHs + stnDResult);
+
+                                            //String stPerDebt2 = String.valueOf(debtRem2);
+
+                                            //percentDebt.setText(stPerDebt2 + "%");
+                                        } else {
+                                            percentExpense.setText(100 + "%");
+                                        }
+
+
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+
+
+                                });
+
+                            }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+
+
+                                });
+
+                            }
+
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+
+                        });
 
                     }
 
@@ -252,94 +321,105 @@ public class DashboardFragment extends Fragment {
 
                 });
 
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+                layoutManager.setReverseLayout(true);
+                layoutManager.setStackFromEnd(true);
+                incomeRecycler.setHasFixedSize(true);
+                incomeRecycler.setLayoutManager(layoutManager);
+
+                LinearLayoutManager layoutManageExpenser = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+                layoutManageExpenser.setReverseLayout(true);
+                layoutManageExpenser.setStackFromEnd(true);
+                expenseRecycler.setHasFixedSize(true);
+                expenseRecycler.setLayoutManager(layoutManageExpenser);
+
+                LinearLayoutManager layoutManageDebt = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+                layoutManageDebt.setReverseLayout(true);
+                layoutManageDebt.setStackFromEnd(true);
+                debtRecycler.setHasFixedSize(true);
+                debtRecycler.setLayoutManager(layoutManageDebt);
+
+                list = new ArrayList<>();
+                adaptorIncome = new IncomeAdaptor(list, getContext());
+                incomeRecycler.setAdapter(adaptorIncome);
+
+                listE = new ArrayList<>();
+                adaptorExpense = new ExpenseAdaptor(listE, getContext());
+                expenseRecycler.setAdapter(adaptorExpense);
+
+                listD = new ArrayList<>();
+                adaptorDebt = new DebtAdaptor(listD, getContext());
+                debtRecycler.setAdapter(adaptorDebt);
+
+                mIncomeData.addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        list.clear();
+
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Data data = dataSnapshot.getValue(Data.class);
+                            list.add(data);
+
+                        }
+                        adaptorIncome.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                mExpenseData.addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        listE.clear();
+
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Data data = dataSnapshot.getValue(Data.class);
+                            listE.add(data);
+
+                        }
+                        adaptorExpense.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                mDebtData.addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        listD.clear();
+
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Data data = dataSnapshot.getValue(Data.class);
+                            listD.add(data);
+
+                        }
+                        adaptorDebt.notifyDataSetChanged();
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                return myView;
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
-
-    }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-
-    }
-
-});
-
-
-
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        incomeRecycler.setHasFixedSize(true);
-        incomeRecycler.setLayoutManager(layoutManager);
-
-        LinearLayoutManager layoutManageExpenser=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-
-        layoutManageExpenser.setReverseLayout(true);
-        layoutManageExpenser.setStackFromEnd(true);
-        expenseRecycler.setHasFixedSize(true);
-        expenseRecycler.setLayoutManager(layoutManageExpenser);
-
-        list=new ArrayList<>();
-        adaptorIncome= new IncomeAdaptor(list,getContext());
-        incomeRecycler.setAdapter(adaptorIncome);
-
-        listE=new ArrayList<>();
-        adaptorExpense= new ExpenseAdaptor(listE,getContext());
-        expenseRecycler.setAdapter(adaptorExpense);
-
-        mIncomeData.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Data data = dataSnapshot.getValue(Data.class);
-                    list.add(data);
-
-                }
-                adaptorIncome.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        mExpenseData.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listE.clear();
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Data data = dataSnapshot.getValue(Data.class);
-                    listE.add(data);
-
-                }
-                adaptorExpense.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-        return myView;
-
-    }
 
     public void ftAnimation(){
 
@@ -599,13 +679,13 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
-                String id = mExpenseData.push().getKey();
+                String id = mDebtData.push().getKey();
                 String mDate = DateFormat.getDateInstance().format(new Date());
 
                 Data data = new Data(inamount, tmType, tmNote, id, mDate);
-                mExpenseData.child(id).setValue(data);
+                mDebtData.child(id).setValue(data);
 
-                Toast.makeText(getActivity(), "Expense Data Added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Debt Data Added", Toast.LENGTH_SHORT).show();
 
 
 

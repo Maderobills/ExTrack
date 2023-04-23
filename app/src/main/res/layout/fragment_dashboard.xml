@@ -263,7 +263,7 @@
                 android:layout_marginTop="-5dp"
                 android:textStyle="bold"
                 android:textSize="10sp"
-                android:text="used"/>
+                android:text="Remaining"/>
 
         </LinearLayout>
 
@@ -282,7 +282,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/total_debt_percent"
@@ -298,7 +298,7 @@
                 android:layout_marginTop="-5dp"
                 android:textStyle="bold"
                 android:textSize="10sp"
-                android:text="used"/>
+                android:text="toClear"/>-->
 
         </LinearLayout>
 
@@ -357,6 +357,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/recycler_id_expense_dash">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DEBT"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_marginVertical="5dp"
+                    android:textColor="@color/white"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycler_id_debt_dash">
 
                 </androidx.recyclerview.widget.RecyclerView>
 

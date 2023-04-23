@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/dashboard"
+    <item android:id="@+id/dashboard2"
         android:title="Dashboard"
         android:icon="@drawable/baseline_dashboard_24"/>
 
@@ -12,6 +12,18 @@
     <item android:id="@+id/expense"
         android:title="Expense"
         android:icon="@drawable/baseline_exposure_neg_1_24"/>
+
+    <item android:id="@+id/debt"
+        android:title="Debt"
+        android:icon="@drawable/baseline_remove_24"/>
+
+    <item android:id="@+id/note"
+        android:title="Notes"
+        android:icon="@drawable/baseline_remove_24"/>
+
+    <item android:id="@+id/chart"
+        android:title="Chart"
+        android:icon="@drawable/baseline_bar_chart_24"/>
 
     <item
         android:title="" />
