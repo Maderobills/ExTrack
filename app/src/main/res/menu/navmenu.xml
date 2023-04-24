@@ -19,7 +19,7 @@
 
     <item android:id="@+id/note"
         android:title="Notes"
-        android:icon="@drawable/baseline_remove_24"/>
+        android:icon="@drawable/baseline_notes_24"/>
 
     <item android:id="@+id/chart"
         android:title="Chart"
