@@ -6,4 +6,30 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="typesIn">
+        <item>Select Type</item>
+        <item>Wages and salaries</item>
+        <item>Business income</item>
+        <item>Investment income</item>
+        <item>Rental income</item>
+        <item>Government benefits</item>
+        <item>Retirement income</item>
+        <item>Royalties</item>
+        <item>Freelance or contract work</item>
+        <item>Miscellaneous income</item>
+        <item>Gifts and inheritances</item>
+    </string-array>
+    <string-array name="typesEx">
+        <item>Select Type</item>
+        <item>Housing expenses</item>
+        <item>Transportation expenses</item>
+        <item>Food and grocery expenses</item>
+        <item>Health and medical expenses</item>
+        <item>Personal care expenses</item>
+        <item>Entertainment expenses</item>
+        <item>Education expenses</item>
+        <item>Taxes</item>
+        <item>Miscellaneous  expenses</item>
+    </string-array>
 </resources>

@@ -80,28 +80,28 @@
                     android:layout_weight="3"
                     android:layout_margin="10dp">
 
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/type_edit"
-                        android:background="@drawable/edittext_background"
-                        android:height="48dp"
-                        android:textColor="@color/black"
-                        android:padding="10dp"
-                        android:maxLines="1"
-                        android:entries="@array/typesIn"/>
+                    <!-- <Spinner
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:id="@+id/type_edit"
+                         android:background="@drawable/edittext_background"
+                         android:height="48dp"
+                         android:textColor="@color/black"
+                         android:padding="10dp"
+                         android:maxLines="1"
+                         android:entries="@array/typesIn"/>-->
 
 
-                    <!--<EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Salary,Payment,Food,Transport"
-                        android:id="@+id/type_edit"
-                        android:textColor="@color/black"
-                        android:padding="10dp"
-                        android:maxLines="1"
-                        android:background="@drawable/edittext_background"
-                        android:height="48dp"/-->
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:hint="Payment,Food,Transport"
+                         android:id="@+id/type_edit"
+                         android:textColor="@color/black"
+                         android:padding="10dp"
+                         android:maxLines="1"
+                         android:background="@drawable/edittext_background"
+                         android:height="48dp"/>
 
 
                 </RelativeLayout>

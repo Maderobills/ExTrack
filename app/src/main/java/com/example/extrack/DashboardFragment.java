@@ -15,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -500,8 +502,13 @@ public class DashboardFragment extends Fragment {
 
         dialog.setCancelable(false);
 
+        final Spinner typesSpinner = myviewm.findViewById(R.id.type_edit);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.typesIn));
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typesSpinner.setAdapter(typeAdapter);
+
         final EditText edtAmount = myviewm.findViewById(R.id.amount_edit);
-        final EditText edtType = myviewm.findViewById(R.id.type_edit);
         final EditText edtNote= myviewm.findViewById(R.id.note_edit);
 
         Button btnSave = myviewm.findViewById(R.id.btn_add);
@@ -512,7 +519,7 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 String amount = edtAmount.getText().toString().trim();
-                String type = edtType.getText().toString().trim();
+                String tmType = typesSpinner.getSelectedItem().toString().trim();
                 String note = edtNote.getText().toString().trim();
 
                 if (TextUtils.isEmpty(amount)){
@@ -520,8 +527,8 @@ public class DashboardFragment extends Fragment {
                     return;
                 }
 
-                if (TextUtils.isEmpty(type)){
-                    edtType.setError("Specify (Salary,Client,Tip..etc)");
+                if (tmType.equals("Select Type")){
+                    Toast.makeText(getActivity(),"Select Type of Income",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -536,7 +543,7 @@ public class DashboardFragment extends Fragment {
 
                 String mDate = DateFormat.getDateInstance().format(new Date());
 
-                Data data = new Data(ouramountint,type,note,id,mDate);
+                Data data = new Data(ouramountint,tmType,note,id,mDate);
 
                 mIncomeData.child(id).setValue(data);
 
@@ -574,8 +581,13 @@ public class DashboardFragment extends Fragment {
 
         dialog.setCancelable(false);
 
+        final Spinner typesSpinner = myview.findViewById(R.id.type_edit);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.typesEx));
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typesSpinner.setAdapter(typeAdapter);
+
         final EditText edtAmount = myview.findViewById(R.id.amount_edit);
-        final EditText edtType = myview.findViewById(R.id.type_edit);
         final EditText edtNote= myview.findViewById(R.id.note_edit);
 
         Button btnSave = myview.findViewById(R.id.btn_add);
@@ -586,7 +598,7 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 String tmAmount = edtAmount.getText().toString().trim();
-                String tmType = edtType.getText().toString().trim();
+                String tmType = typesSpinner.getSelectedItem().toString().trim();
                 String tmNote = edtNote.getText().toString().trim();
 
                 if (TextUtils.isEmpty(tmAmount)){
@@ -596,8 +608,8 @@ public class DashboardFragment extends Fragment {
 
                 float inamount = Float.parseFloat(tmAmount);
 
-                if (TextUtils.isEmpty(tmType)){
-                    edtType.setError("Specify (Food,Transport,Entertainment,Tip..etc)");
+                if (tmType.equals("Select Type")){
+                    Toast.makeText(getActivity(),"Select Type of Expense",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -640,7 +652,7 @@ public class DashboardFragment extends Fragment {
 
         AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
         LayoutInflater inflator = LayoutInflater.from(getActivity());
-        View myview = inflator.inflate(R.layout.custom_layout_for_insertdata,null);
+        View myview = inflator.inflate(R.layout.custom_layout_for_insertdata2,null);
         mydialog.setView(myview);
 
         final AlertDialog dialog = mydialog.create();
