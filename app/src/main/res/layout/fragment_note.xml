@@ -40,7 +40,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fb_main_plus_btn"
+            android:id="@+id/fab_notes_btn"
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="15dp"
             android:layout_marginEnd="20dp"

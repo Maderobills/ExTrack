@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="5dp"
-    android:layout_margin="5dp"
-    android:elevation="5dp"
-    android:padding="10dp"
-    app:cardCornerRadius="10dp">
+    app:cardUseCompatPadding="true"
+    android:orientation="vertical">
 
-      <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/background_card">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/titles_edit"
+                        android:id="@+id/title_edit"
                         android:hint="Title here"
                         android:background="@drawable/edittext_background"
                         android:textColor="@color/black"
@@ -78,7 +79,6 @@
 
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,8 +94,8 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="CANCEL"
-                        android:id="@+id/btn_cancel"
+                        android:text="DELETE"
+                        android:id="@+id/btn_delete"
                         android:paddingVertical="10dp"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@color/yell"
@@ -113,13 +113,13 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ADD"
-                        android:backgroundTint="#FFF"
+                        android:text="UPDATE"
+                        android:id="@+id/btn_update"
                         android:paddingVertical="10dp"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/yell"
+                        android:backgroundTint="@color/white"
                         style="@style/MyButtonStyle"
-                        android:id="@+id/btn_add"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="#F2CB2E"
                         android:textStyle="bold"/>
 
 
@@ -128,5 +128,9 @@
             </LinearLayout>
 
         </LinearLayout>
+
+    </ScrollView>
+
+
 
 </androidx.cardview.widget.CardView>
