@@ -324,21 +324,21 @@ public class DashboardFragment extends Fragment {
                 });
 
 
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
                 layoutManager.setReverseLayout(true);
                 layoutManager.setStackFromEnd(true);
                 incomeRecycler.setHasFixedSize(true);
                 incomeRecycler.setLayoutManager(layoutManager);
 
-                LinearLayoutManager layoutManageExpenser = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                LinearLayoutManager layoutManageExpenser = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
                 layoutManageExpenser.setReverseLayout(true);
                 layoutManageExpenser.setStackFromEnd(true);
                 expenseRecycler.setHasFixedSize(true);
                 expenseRecycler.setLayoutManager(layoutManageExpenser);
 
-                LinearLayoutManager layoutManageDebt = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                LinearLayoutManager layoutManageDebt = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
                 layoutManageDebt.setReverseLayout(true);
                 layoutManageDebt.setStackFromEnd(true);
