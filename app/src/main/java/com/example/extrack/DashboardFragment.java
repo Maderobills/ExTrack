@@ -502,6 +502,12 @@ public class DashboardFragment extends Fragment {
 
         dialog.setCancelable(false);
 
+        final Spinner methodSpinner = myviewm.findViewById(R.id.payment_edit);
+        ArrayAdapter<String> methodAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.paytypes));
+        methodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        methodSpinner.setAdapter(methodAdapter);
+
         final Spinner typesSpinner = myviewm.findViewById(R.id.type_edit);
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.typesIn));
@@ -519,11 +525,17 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 String amount = edtAmount.getText().toString().trim();
+                String tmMethod = methodSpinner.getSelectedItem().toString().trim();
                 String tmType = typesSpinner.getSelectedItem().toString().trim();
                 String note = edtNote.getText().toString().trim();
 
                 if (TextUtils.isEmpty(amount)){
                     edtAmount.setError("Specify Amount");
+                    return;
+                }
+
+                if (tmType.equals("Select Payment Method")){
+                    Toast.makeText(getActivity(),"Select Type of Payment",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -543,7 +555,7 @@ public class DashboardFragment extends Fragment {
 
                 String mDate = DateFormat.getDateInstance().format(new Date());
 
-                Data data = new Data(ouramountint,tmType,note,id,mDate);
+                Data data = new Data(ouramountint,tmMethod,tmType,note,id,mDate);
 
                 mIncomeData.child(id).setValue(data);
 
@@ -581,6 +593,12 @@ public class DashboardFragment extends Fragment {
 
         dialog.setCancelable(false);
 
+        final Spinner methodSpinner = myview.findViewById(R.id.payment_edit);
+        ArrayAdapter<String> methodAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.paytypes));
+        methodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        methodSpinner.setAdapter(methodAdapter);
+
         final Spinner typesSpinner = myview.findViewById(R.id.type_edit);
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.typesEx));
@@ -598,6 +616,7 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 String tmAmount = edtAmount.getText().toString().trim();
+                String tmMethod = methodSpinner.getSelectedItem().toString().trim();
                 String tmType = typesSpinner.getSelectedItem().toString().trim();
                 String tmNote = edtNote.getText().toString().trim();
 
@@ -607,6 +626,11 @@ public class DashboardFragment extends Fragment {
                 }
 
                 float inamount = Float.parseFloat(tmAmount);
+
+                if (tmType.equals("Select Payment Method")){
+                    Toast.makeText(getActivity(),"Select Type of Payment",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (tmType.equals("Select Type")){
                     Toast.makeText(getActivity(),"Select Type of Expense",Toast.LENGTH_SHORT).show();
@@ -621,7 +645,7 @@ public class DashboardFragment extends Fragment {
                 String id = mExpenseData.push().getKey();
                 String mDate = DateFormat.getDateInstance().format(new Date());
 
-                Data data = new Data(inamount, tmType, tmNote, id, mDate);
+                Data data = new Data(inamount,tmMethod, tmType, tmNote, id, mDate);
                 mExpenseData.child(id).setValue(data);
 
                 Toast.makeText(getActivity(), "Expense Data Added", Toast.LENGTH_SHORT).show();
@@ -659,6 +683,12 @@ public class DashboardFragment extends Fragment {
 
         dialog.setCancelable(false);
 
+        final Spinner methodSpinner = myview.findViewById(R.id.payment_edit);
+        ArrayAdapter<String> methodAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.paytypes));
+        methodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        methodSpinner.setAdapter(methodAdapter);
+
         final EditText edtAmount = myview.findViewById(R.id.amount_edit);
         final EditText edtType = myview.findViewById(R.id.type_edit);
         final EditText edtNote= myview.findViewById(R.id.note_edit);
@@ -671,6 +701,7 @@ public class DashboardFragment extends Fragment {
             public void onClick(View v) {
 
                 String tmAmount = edtAmount.getText().toString().trim();
+                String tmMethod = methodSpinner.getSelectedItem().toString().trim();
                 String tmType = edtType.getText().toString().trim();
                 String tmNote = edtNote.getText().toString().trim();
 
@@ -680,6 +711,11 @@ public class DashboardFragment extends Fragment {
                 }
 
                 float inamount = Float.parseFloat(tmAmount);
+
+                if (tmType.equals("Select Payment Method")){
+                    Toast.makeText(getActivity(),"Select Type of Payment",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (TextUtils.isEmpty(tmType)){
                     edtType.setError("Specify (Food,Transport,Entertainment,Tip..etc)");
@@ -694,7 +730,7 @@ public class DashboardFragment extends Fragment {
                 String id = mDebtData.push().getKey();
                 String mDate = DateFormat.getDateInstance().format(new Date());
 
-                Data data = new Data(inamount, tmType, tmNote, id, mDate);
+                Data data = new Data(inamount,tmMethod, tmType, tmNote, id, mDate);
                 mDebtData.child(id).setValue(data);
 
                 Toast.makeText(getActivity(), "Debt Data Added", Toast.LENGTH_SHORT).show();
