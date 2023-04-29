@@ -50,15 +50,35 @@
             android:layout_height="wrap_content"
             android:layout_weight="4">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="000.000"
-                android:textColor="#FF00"
-                android:textSize="20sp"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:id="@+id/amount_txt_debt"/>
+                android:id="@+id/anmount"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000.000"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textStyle="bold"
+                    android:id="@+id/amount_txt_debt"
+                    android:layout_marginRight="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Method"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textStyle="bold"
+                    android:id="@+id/payment_txt_debt"
+                    android:layout_marginLeft="5dp"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,7 +88,7 @@
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
-                android:layout_below="@+id/amount_txt_debt"
+                android:layout_below="@+id/anmount"
                 android:id="@+id/note_txt_debt"/>
         </RelativeLayout>
 

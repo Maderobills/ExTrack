@@ -30,10 +30,10 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<Data> arrayList;
     Context context;
 
-    private EditText editAmount, editNote,editType;
+    private EditText editAmount, editNote,editType,editMethod;
     private Button btnUpdate,btnDelete;
 
-    private String type,note,post_key;
+    private String paymethod, type,note,post_key;
     private float amount;
 
     private DatabaseReference mIncomeData;
@@ -59,6 +59,7 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
         String gH = "GHS ";
 
         final Data data = arrayList.get(position);
+        holder.paymethod.setText(data.getPaymethod());
         holder.type.setText(data.getType());
         holder.amount.setText(String.format(gH+"%.2f",data.getAmount()));
         holder.note.setText(data.getNote());
@@ -69,7 +70,7 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
             public void onClick(View v) {
 
                 post_key=data.getId();
-
+                paymethod = data.getPaymethod();
                 type = data.getType();
                 note = data.getNote();
                 amount = data.getAmount();
@@ -90,11 +91,15 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
         final AlertDialog dialog=mydialog.create();
 
         editAmount=myview.findViewById(R.id.amount_edit);
+        editMethod=myview.findViewById(R.id.payment_edit);
         editType=myview.findViewById(R.id.type_edit);
         editNote=myview.findViewById(R.id.note_edit);
 
         editType.setText(type);
         editType.setSelection(type.length());
+
+        editMethod.setText(paymethod);
+        editMethod.setSelection(paymethod.length());
 
         editNote.setText(note);
         editNote.setSelection(note.length());
@@ -112,12 +117,13 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
             public void onClick(View v) {
                 //arrayList.clear();
                 type=editType.getText().toString().trim();
+                paymethod=editMethod.getText().toString().trim();
                 note=editNote.getText().toString().trim();
                 String maomunt=String.valueOf(amount);
                 maomunt=editAmount.getText().toString().trim();
                 float myAmount=Float.parseFloat(maomunt);
                 String mDate = DateFormat.getDateInstance().format(new Date());
-                Data data = new Data(myAmount,type,note,post_key,mDate);
+                Data data = new Data(myAmount,paymethod,type,note,post_key,mDate);
 
 
                 mIncomeData= FirebaseDatabase.getInstance().getReference().child("IncomeData").child(FirebaseAuth.getInstance().getUid());
@@ -171,12 +177,13 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView type, note, id, date,amount;
+        TextView type,paymethod, note, id, date,amount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             type = itemView.findViewById(R.id.type_txt_income);
+            paymethod = itemView.findViewById(R.id.payment_txt_income);
             date = itemView.findViewById(R.id.date_txt_income);
             note = itemView.findViewById(R.id.note_txt_income);
             amount = itemView.findViewById(R.id.amount_txt_income);

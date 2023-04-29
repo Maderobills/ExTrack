@@ -5,10 +5,11 @@ import java.util.prefs.PreferenceChangeEvent;
 
 public class Data {
     private float amount;
-    private String  type, note, id, date;
+    private String  paymethod,type, note, id, date;
 
-    public Data(float amount, String type, String note, String id, String date) {
+    public Data(float amount,  String paymethod, String type, String note, String id, String date) {
         this.amount = amount;
+        this.paymethod = paymethod;
         this.type = type;
         this.note = note;
         this.id = id;
@@ -25,6 +26,14 @@ public class Data {
 
     public String getType() {
         return type;
+    }
+
+    public String getPaymethod() {
+        return paymethod;
+    }
+
+    public void setPaymethod(String paymethod) {
+        this.paymethod = paymethod;
     }
 
     public void setType(String type) {

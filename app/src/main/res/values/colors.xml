@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yell">#F2CB2E</color>
 
-
+    <color name="transparent">#00000000</color>
     <color name="toolbar_color">#F2CB2E</color>
     <color name="dashboard_color">#33F2CB2E</color>
     <color name="income_color">#3300FF00</color>

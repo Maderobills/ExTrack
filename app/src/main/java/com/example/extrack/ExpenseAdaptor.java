@@ -36,6 +36,7 @@ public class ExpenseAdaptor extends RecyclerView.Adapter<ExpenseAdaptor.ViewHold
         String gH = "GHS ";
 
         Data data = arrayListExpense.get(position);
+        holder.paymethod.setText(data.getPaymethod());
         holder.type.setText(data.getType());
         holder.amount.setText(String.format(gH+"%.2f",data.getAmount()));
         holder.note.setText(data.getNote());
@@ -51,11 +52,12 @@ public class ExpenseAdaptor extends RecyclerView.Adapter<ExpenseAdaptor.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView type, note, id, date,amount;
+        TextView paymethod,type, note, id, date,amount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            paymethod = itemView.findViewById(R.id.payment_txt_expense_dash);
             type = itemView.findViewById(R.id.type_txt_expense_dash);
             date = itemView.findViewById(R.id.date_txt_expense_dash);
             note = itemView.findViewById(R.id.note_txt_expense_dash);

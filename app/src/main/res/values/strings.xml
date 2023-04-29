@@ -32,4 +32,14 @@
         <item>Taxes</item>
         <item>Miscellaneous  expenses</item>
     </string-array>
+    <string-array name="paytypes">
+        <item>Select Payment Method</item>
+        <item>Cash</item>
+        <item>MoMo</item>
+        <item>Bank Transfer</item>
+        <item>Checks</item>
+        <item>Digital Wallets</item>
+        <item>Cryptocurrencies</item>
+        <item>Prepaid Cards</item>
+    </string-array>
 </resources>
