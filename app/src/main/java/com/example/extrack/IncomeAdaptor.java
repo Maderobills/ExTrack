@@ -57,7 +57,7 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.ViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            paymethod = itemView.findViewById(R.id.payment_txt_debt_dash);
+            paymethod = itemView.findViewById(R.id.payment_txt_income_dash);
             type = itemView.findViewById(R.id.type_txt_income_dash);
             date = itemView.findViewById(R.id.date_txt_income_dash);
             note = itemView.findViewById(R.id.note_txt_income_dash);

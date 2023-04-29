@@ -4,15 +4,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="10dp"
-    android:layout_gravity="center"
-    android:elevation="5dp"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="10dp"
-    android:padding="10dp"
-    app:cardCornerRadius="30dp">
+    android:layout_gravity="center"
+    android:elevation="5dp"
+    android:padding="5dp"
+    app:cardCornerRadius="20dp">
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white">
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6 june 2023"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:layout_marginVertical="2dp"
                 android:textColor="@color/white"
                 android:background="@drawable/layout_background"
@@ -42,22 +42,20 @@
                 android:layout_height="wrap_content"
                 android:text="Type"
                 android:layout_marginVertical="2dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:layout_below="@+id/date_txt_debt_dash"
                 android:id="@+id/type_txt_debt_dash"
-                android:maxLines="1"/>
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="000.00"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
                 android:layout_marginVertical="2dp"
                 android:textColor="#FF0000"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:background="@drawable/layout_background"
@@ -66,25 +64,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Payment Method"
+                android:textSize="12sp"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:id="@+id/payment_txt_debt_dash"
-                android:layout_marginLeft="5dp"/>
+                android:id="@+id/payment_txt_debt_dash" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Note"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:maxLines="3"
                 android:layout_marginVertical="3dp"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:paddingHorizontal="10dp"
-                android:layout_below="@+id/amount_txt_debt_dash"
+                android:paddingHorizontal="5dp"
                 android:id="@+id/note_txt_debt_dash"/>
 
 

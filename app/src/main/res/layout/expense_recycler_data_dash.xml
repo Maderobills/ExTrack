@@ -8,11 +8,11 @@
     android:layout_marginVertical="10dp"
     android:layout_gravity="center"
     android:elevation="5dp"
-    android:padding="10dp"
-    app:cardCornerRadius="30dp">
+    android:padding="5dp"
+    app:cardCornerRadius="20dp">
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/expense_color">
@@ -28,10 +28,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6 june 2023"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:layout_marginVertical="2dp"
                 android:background="@drawable/layout_background"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/white"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
@@ -40,25 +40,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 android:text="Type"
                 android:layout_marginVertical="2dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:layout_below="@+id/date_txt_expense_dash"
-                android:id="@+id/type_txt_expense_dash"
-                android:maxLines="1"/>
+                android:id="@+id/type_txt_expense_dash" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
                 android:text="000.00"
-                android:layout_marginVertical="2dp"
                 android:textColor="#FF00"
                 android:background="@drawable/layout_background"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textStyle="bold"
                 android:id="@+id/amount_txt_expense_dash"/>
@@ -68,11 +65,10 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Method"
                 android:maxLines="1"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:id="@+id/payment_txt_expense_dash"
-                android:layout_marginLeft="5dp"/>
+                android:id="@+id/payment_txt_expense_dash" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,12 +76,10 @@
                 android:text="Note"
                 android:maxLines="3"
                 android:layout_marginVertical="3dp"
-                android:textSize="20sp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textStyle="bold"
-                android:paddingHorizontal="10dp"
-                android:layout_below="@+id/amount_txt_expense_dash"
+                android:paddingHorizontal="5dp"
                 android:id="@+id/note_txt_expense_dash"/>
 
 
