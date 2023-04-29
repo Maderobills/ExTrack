@@ -139,14 +139,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:text="Debt"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/total_debt_result"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -314,7 +314,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/layout_background_dash2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -342,7 +344,8 @@
 
                     <ScrollView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
@@ -376,7 +379,8 @@
 
                     <ScrollView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
@@ -410,7 +414,8 @@
 
                     <ScrollView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
@@ -427,7 +432,6 @@
 
 
             </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -549,8 +553,6 @@
             android:tint="#000000"
             android:src="@drawable/baseline_add_24"
             android:contentDescription="toggle InputDialog" />
-
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
